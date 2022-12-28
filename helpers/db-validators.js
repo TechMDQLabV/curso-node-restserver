@@ -1,5 +1,5 @@
-const Role = require('../models/role');
-const User = require('../models/user');
+const Role = require('../models/role.model');
+const User = require('../models/user.model');
 
  const isValidRole = async (role = '') =>{
     const roleExist = await Role.findOne({ role });
@@ -16,7 +16,7 @@ const existEmail = async (email = '') => {
 };
 
 const existIdUser = async (id ) => {
-    const exist = await User.findById({ id });
+    const exist = await User.findById( id );
     if(!exist){
         throw new Error(`El ID ${id} no existe`);
     }

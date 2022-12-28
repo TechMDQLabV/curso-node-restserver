@@ -1,6 +1,6 @@
 const { response } = require('express');
 const bcryptjs = require('bcryptjs');
-const User = require('../models/user');
+const User = require('../models/user.model');
 
 const usersGet = async(req, res = response) => {
     const { limit = 5, from = 0 } = req.query;
@@ -61,9 +61,7 @@ const usersPatch = (req, res) => {
 
 const usersDelete = async(req, res) => {
     const { id } = req.params;
-    const { _id, password, google, email, ...userData } = req.body;
-    userData.state = false;
-    const user = await User.findByIdAndUpdate(id, userData);
+    const user = await User.findByIdAndUpdate(id, { state: false });
     //para eliminacion fisica
     // const user = await User.findByIdAndDelete( id );
 
