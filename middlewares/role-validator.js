@@ -14,7 +14,7 @@ const isAdminRole = (req, res, next) => {
             msg: `${name} no tiene el rol de Administrador`
         });        
     }
-
+    next();
 };
 
 const hasRole = ( ...roles ) => {
