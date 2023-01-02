@@ -35,10 +35,19 @@ const existIdProduct = async ( id ) => {
     }
 };
 
+const collectionValidator = ( collection = '', collections = []) => {
+    const include = collections.includes(collection);
+    if( !include ){
+        throw new Error(`La colección ${collection} no está permitida`);
+    }
+    return true;
+}
+
 module.exports = {
     isValidRole,
     existEmail,
     existIdUser,
     existIdCategory,
-    existIdProduct
+    existIdProduct,
+    collectionValidator
 };
